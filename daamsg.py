@@ -1,59 +1,37 @@
 
-def shortestDist(graph): 
-	global X 
+node=input("enter number of nodes in graph\n")
+node=int(node)
 
-	# dist[i] is going to store shortest 
-	# distance from node i to node N-1. 
-	dist = [0] * N 
+graph=[]
+x = 99999999
 
-	dist[N - 1] = 0
+for i in range(node-1):
+    inner=[]
+    for j in range(node):
+        inner.append(x)
+    graph.append(inner)
 
-	# Calculating shortest path 
-	# for rest of the nodes 
-	for i in range(N - 2, -1, -1): 
+for i in range(node-1):
+    for j in range(i+1,node):
+        print("enter distance of "+str(i+1)+"th node to "+str(j+1)+"th node. enter x if they are not connected")
+        inp=input()
+        if inp=='x':
+            graph[i][j]=x
+        else:
+            graph[i][j]=int(inp)
 
-		# Initialize distance from 
-		# i to destination (N-1) 
-		dist[i] = X 
+def MSG(graph,node,x):  
 
-		# CheSck all nodes of next stages 
-		# to find shortest distance from 
-		# i to N-1. 
-		for j in range(N): 
-			
-			# Reject if no edge exists 
-			if graph[i][j] == X: 
+	dist = [0]*node 
+	dist[node-1]=0
+
+	for i in range(node-2,-1,-1): 
+		dist[i]=x 
+		for j in range(node):
+			if graph[i][j]==x: 
 				continue
-
-			# We apply recursive equation to 
-			# distance to target through j. 
-			# and compare with minimum 
-			# distance so far. 
-			dist[i] = min(dist[i], 
-						graph[i][j] + dist[j]) 
-
+			dist[i]=min(dist[i],graph[i][j]+dist[j]) 
 	return dist[0] 
 
-# Driver code 
-N = 8
-X = 999999999999
-
-graph =[[X, 1, 2, 5, X, X, X, X], 
-		[X, X, X, X, 4, 11, X, X], 
-		[X, X, X, X, 9, 5, 16, X], 
-		[X, X, X, X, X, X, 2, X], 
-		[X, X, X, X, X, X, X, 18], 
-		[X, X, X, X, X, X, X, 13], 
-		[X, X, X, X, X, X, X, 2]] 
-
-node=input("enter number of nodes in graph\n")
-for i in range(node):
-    print("enter "+i+)
-for conn in node:
-    for node in graph:
-        pass
-
-
-print(shortestDist(graph)) 
-
-# who is this
+print("shortest distance from first node to final node is:")         
+print(MSG(graph,node,x)) 
