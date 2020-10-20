@@ -1,10 +1,6 @@
-# Python3 program to find shortest 
-# distance in a multistage graph. 
 
-# Returns shortest distance from 
-# 0 to N-1. 
 def shortestDist(graph): 
-	global INF 
+	global X 
 
 	# dist[i] is going to store shortest 
 	# distance from node i to node N-1. 
@@ -18,15 +14,15 @@ def shortestDist(graph):
 
 		# Initialize distance from 
 		# i to destination (N-1) 
-		dist[i] = INF 
+		dist[i] = X 
 
-		# Check all nodes of next stages 
+		# CheSck all nodes of next stages 
 		# to find shortest distance from 
 		# i to N-1. 
 		for j in range(N): 
 			
 			# Reject if no edge exists 
-			if graph[i][j] == INF: 
+			if graph[i][j] == X: 
 				continue
 
 			# We apply recursive equation to 
@@ -40,18 +36,24 @@ def shortestDist(graph):
 
 # Driver code 
 N = 8
-INF = 999999999999
+X = 999999999999
 
-# Graph stored in the form of an 
-# adjacency Matrix 
-graph = [[INF, 1, 2, 5, INF, INF, INF, INF], 
-		[INF, INF, INF, INF, 4, 11, INF, INF], 
-		[INF, INF, INF, INF, 9, 5, 16, INF], 
-		[INF, INF, INF, INF, INF, INF, 2, INF], 
-		[INF, INF, INF, INF, INF, INF, INF, 18], 
-		[INF, INF, INF, INF, INF, INF, INF, 13], 
-		[INF, INF, INF, INF, INF, INF, INF, 2]] 
+graph =[[X, 1, 2, 5, X, X, X, X], 
+		[X, X, X, X, 4, 11, X, X], 
+		[X, X, X, X, 9, 5, 16, X], 
+		[X, X, X, X, X, X, 2, X], 
+		[X, X, X, X, X, X, X, 18], 
+		[X, X, X, X, X, X, X, 13], 
+		[X, X, X, X, X, X, X, 2]] 
+
+node=input("enter number of nodes in graph\n")
+for i in range(node):
+    print("enter "+i+)
+for conn in node:
+    for node in graph:
+        pass
+
 
 print(shortestDist(graph)) 
 
-# This code is contributed by PranchalK 
+# who is this
